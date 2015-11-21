@@ -7,11 +7,14 @@
     <link rel="stylesheet" type="text/css" href="css/twitterlyticsStyle.css">
     <link rel="shortcut icon" href="images/shield.ico">
     <script src="js/jquery-2.1.0.min.js"></script>
-    <script src="js/server_functions.js"></script>    
     <script src="js/system_functions.js"></script>
     <script src="js/update-twitter.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="js/wordcloud2.js/src/wordcloud2.js"></script>
+    <script>google.maps.event.addDomListener(window, 'load', initialize)</script>
+
   </head>
-  <body>
+  <body onload="generateID(); clearValues()">
   	<!-- System Header: Cosmetic header displaying the system name -->
     <header id="siteHeader" class="banner">
       <h1>TWITTERLYTICS</h1>
@@ -47,8 +50,11 @@
 
 			<br>
 			<p>Word cloud:</p>
-			<p> INSERT WORD CLOUD HERE </p>
-			
+			<canvas id='mycanvas' class='mycanvas' height='300px' width='300px'></canvas>
+			<script>
+				var list=[['saab', 12], ['hello',25], ['WHAT', 25],['ARE',35],['THOSE',50]];
+				WordCloud(document.getElementById('mycanvas'), { list: list } );
+			</script>
 			</br>
 
 			<p>What's campus talking about right now?</p>
@@ -132,6 +138,9 @@
 	      	</div> 
 
 			</fieldset>
-		</form>    	
+		</form>  
+	</div>
+    <div id="map_canvas">Google Map</div>
+		
   </body>
 </html>   
