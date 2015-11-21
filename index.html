@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<!--Importing for use in the system-->
+    <meta charset="UTF-8">
+    <title>Twitterlytics College Search System</title>
+    <link rel="stylesheet" type="text/css" href="css/twitterlyticsStyle.css">
+    <link rel="shortcut icon" href="images/shield.ico">
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/server_functions.js"></script>    
+    <script src="js/system_functions.js"></script>
+    <script src="js/update-twitter.js"></script>
+  </head>
+  <body>
+  	<!-- System Header: Cosmetic header displaying the system name -->
+    <header id="siteHeader" class="banner">
+      <h1>TWITTERLYTICS</h1>
+      <p>College Search System</p>
+    </header>
+
+     <!-- Links to the various html pages -->
+    <div id="siteLinks">
+      <ul>
+        <li class='active'><a href="index.html"><span>Home</span></a></li>
+       	<li><a href="dead.html"><span>Help</span></a></li>
+        <li><a href="dead.html"><span>About Us</span></a></li>
+      </ul>
+    </div>
+
+    <div id="sidebar">
+		<form id="submitReportForm" style="padding-left: 5px; padding-top: 10px; padding-right: 5px">
+			<fieldset>
+			<!--<h1 id="reportHead">Report Details</h1><br />-->
+			<legend style="font-size: 35px">College Details</legend>
+			<p>Campus: <font color="red"><sup>*</sup></font></p>
+			<select id="school-select" name="school" onchange="updateTwitter();">
+				<option selected="selected">UMBC</option>
+				<option>Towson</option>
+        		<option>John Hopkins</option>
+        		<option>College Park</option>
+        		<option>Hood</option>
+			</select>	
+
+			<p><br/>Select a subject matter:</p>
+			<input type="radio" name="subject" id="subject" value="Food"> Food/Dining<br />
+			<input type="radio" name="subject" id="subject" value="Academics"> Academics<br/>
+
+			<br>
+			<p>Word cloud:</p>
+			<p> INSERT WORD CLOUD HERE </p>
+			
+			</br>
+
+			<p>What's campus talking about right now?</p>
+
+			<! Twitter Live Feed for the Campuses>
+      
+	      	<div id="umbc-timeline">
+	      	    <a class="twitter-timeline"  href="https://twitter.com/hashtag/UMBC" data-widget-id="667455250371108864">#UMBC Tweets</a>
+            	<script>!function(d,s,id){ 
+            		var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";
+            		if(!d.getElementById(id)) {
+            			js=d.createElement(s);
+            			js.id=id;
+            			js.src=p+"://platform.twitter.com/widgets.js";
+            			fjs.parentNode.insertBefore(js,fjs);
+            		}
+            	}
+            	(document,"script","twitter-wjs");
+            	</script>
+	      	</div>  
+
+	      	<div id="jhu-timeline" style="display:none">            
+	      		<a class="twitter-timeline"  href="https://twitter.com/hashtag/JHU" data-widget-id="667489146961682432">#JHU Tweets</a>
+            	<script>!function(d,s,id){ 
+            		var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";
+            		if(!d.getElementById(id)) {
+            			js=d.createElement(s);
+            			js.id=id;
+            			js.src=p+"://platform.twitter.com/widgets.js";
+            			fjs.parentNode.insertBefore(js,fjs);
+            		}
+            	}
+            	(document,"script","twitter-wjs");
+            	</script>
+	      	</div>  
+
+			<div id="umd-timeline" style="display:none">            
+	      		<a class="twitter-timeline"  href="https://twitter.com/hashtag/UMD" data-widget-id="667475207024566274">#UMD Tweets</a>
+            	<script>!function(d,s,id){ 
+            		var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";
+            		if(!d.getElementById(id)) {
+            			js=d.createElement(s);
+            			js.id=id;
+            			js.src=p+"://platform.twitter.com/widgets.js";
+            			fjs.parentNode.insertBefore(js,fjs);
+            		}
+            	}
+            	(document,"script","twitter-wjs");
+            	</script>
+	      	</div>
+
+	      	<div id="towson-timeline" style="display:none">            
+	      		<a class="twitter-timeline"  href="https://twitter.com/hashtag/Towson" data-widget-id="667488606542364672">#Towson Tweets</a>
+            	<script>!function(d,s,id){ 
+            		var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";
+            		if(!d.getElementById(id)) {
+            			js=d.createElement(s);
+            			js.id=id;
+            			js.src=p+"://platform.twitter.com/widgets.js";
+            			fjs.parentNode.insertBefore(js,fjs);
+            		}
+            	}
+            	(document,"script","twitter-wjs");
+            	</script>
+	      	</div> 
+
+			<div id="hood-timeline" style="display:none">            
+	      		<a class="twitter-timeline"  href="https://twitter.com/hashtag/HoodCollege" data-widget-id="667488795919384576">#HoodCollege Tweets</a>
+          
+            	<script>!function(d,s,id){ 
+            		var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";
+            		if(!d.getElementById(id)) {
+            			js=d.createElement(s);
+            			js.id=id;
+            			js.src=p+"://platform.twitter.com/widgets.js";
+            			fjs.parentNode.insertBefore(js,fjs);
+            		}
+            	}
+            	(document,"script","twitter-wjs");
+            	</script>
+	      	</div> 
+
+			</fieldset>
+		</form>    	
+  </body>
+</html>   
