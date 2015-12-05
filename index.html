@@ -50,11 +50,12 @@
 
 			<br>
 			<p>Word cloud:</p>
-			<canvas id='mycanvas' class='mycanvas' height='300px' width='300px'></canvas>
-			<script>
-				var list=[['saab', 12], ['hello',25], ['WHAT', 25],['ARE',35],['THOSE',50]];
-				WordCloud(document.getElementById('mycanvas'), { list: list } );
-			</script>
+			<canvas id='umbccanvas' class='umbccanvas' height='300px' width='300px'></canvas>
+			<canvas id='hoodcanvas' class='hoodcanvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='hopkinscanvas' class='hopkinscanvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='towsoncanvas' class='towsoncanvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='umdcanvas' class='umdcanvas' style="display:none" height='300px' width='300px'></canvas>
+			
 			</br>
 
 			<p>What's campus talking about right now?</p>
@@ -136,6 +137,76 @@
             	(document,"script","twitter-wjs");
             	</script>
 	      	</div> 
+<script>
+	var hopkinslist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/hopkinsTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						hopkinslist.push([mini[0], parseInt(mini[1]) / 15]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('hopkinscanvas'), { list: hopkinslist } );
+		});
+
+	var hoodlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/hoodTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						hoodlist.push([mini[0], parseInt(mini[1]) / 15]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('hoodcanvas'), { list: hoodlist } );
+		});
+
+	var towsonlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/towsonTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						towsonlist.push([mini[0], parseInt(mini[1]) / 15]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('towsoncanvas'), { list: towsonlist } );
+		});
+
+	var umdlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/umdTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						umdlist.push([mini[0], parseInt(mini[1]) / 15]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('umdcanvas'), { list: umdlist } );
+		});
+	var list = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/umbcTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						list.push([mini[0], parseInt(mini[1]) / 15]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('umbccanvas'), { list: list } );
+		});
+</script>
 
 			</fieldset>
 		</form>  
