@@ -45,16 +45,27 @@
 			</select>	
 
 			<p><br/>Select a subject matter:</p>
-			<input type="radio" name="subject" id="subject" value="Food"> Food/Dining<br />
-			<input type="radio" name="subject" id="subject" value="Academics"> Academics<br/>
+			<input type="radio" name="subject" id="subject-general" value="General" checked="checked" onClick="updateTwitter();"> General<br />
+			<input type="radio" name="subject" id="subject-food" value="Food" onClick="updateTwitter();"> Food/Dining<br />
+			<input type="radio" name="subject" id="subject-acad" value="Academics" onClick="updateTwitter();"> Academics<br/>
 
 			<br>
 			<p>Word cloud:</p>
-			<canvas id='umbccanvas' class='umbccanvas' height='300px' width='300px'></canvas>
-			<canvas id='hoodcanvas' class='hoodcanvas' style="display:none" height='300px' width='300px'></canvas>
-			<canvas id='hopkinscanvas' class='hopkinscanvas' style="display:none" height='300px' width='300px'></canvas>
-			<canvas id='towsoncanvas' class='towsoncanvas' style="display:none" height='300px' width='300px'></canvas>
-			<canvas id='umdcanvas' class='umdcanvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='umbc-canvas' class='umbccanvas' height='300px' width='300px'></canvas>
+			<canvas id='umbc-food-canvas' class='umbc-food-canvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='umbc-acad-canvas' class='umbc-acad-canvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='hood-canvas' class='hoodcanvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='hood-food-canvas' class='hood-food-canvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='hood-acad-canvas' class='hood-acad-canvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='hopkins-canvas' class='hopkinscanvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='hopkins-food-canvas' class='hopkins-food-canvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='hopkins-acad-canvas' class='hopkins-acad-canvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='towson-canvas' class='towsoncanvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='towson-food-canvas' class='towson-food-canvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='towson-acad-canvas' class='towson-acad-canvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='umd-canvas' class='umdcanvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='umd-food-canvas' class='umd-food-canvas' style="display:none" height='300px' width='300px'></canvas>
+			<canvas id='umd-acad-canvas' class='umd-acad-canvas' style="display:none" height='300px' width='300px'></canvas>
 			
 			</br>
 
@@ -149,7 +160,35 @@
 					}
 				}
 			}
-			WordCloud(document.getElementById('hopkinscanvas'), { list: hopkinslist } );
+			WordCloud(document.getElementById('hopkins-canvas'), { list: hopkinslist } );
+		});
+
+	var hopkinsfoodlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/hopkinsFoodTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						hopkinsfoodlist.push([mini[0], parseInt(mini[1])]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('hopkins-food-canvas'), { list: hopkinsfoodlist } );
+		});
+
+	var hopkinsacadlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/hopkinsAcadTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						hopkinsacadlist.push([mini[0], parseInt(mini[1]) * 7]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('hopkins-acad-canvas'), { list: hopkinsacadlist } );
 		});
 
 	var hoodlist = [];
@@ -159,11 +198,39 @@
 				var mini = bigSplit[i].split(",");
 				if (mini.length == 2){
 					if (!isNaN(parseInt(mini[1]))){
-						hoodlist.push([mini[0], parseInt(mini[1]) / 15]);
+						hoodlist.push([mini[0], parseInt(mini[1]) / 13]);
 					}
 				}
 			}
-			WordCloud(document.getElementById('hoodcanvas'), { list: hoodlist } );
+			WordCloud(document.getElementById('hood-canvas'), { list: hoodlist } );
+		});
+
+	var hoodfoodlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/hoodFoodTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						hoodfoodlist.push([mini[0], parseInt(mini[1]) * 4]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('hood-food-canvas'), { list: hoodfoodlist } );
+		});
+
+	var hoodacadlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/hoodAcadTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						hoodacadlist.push([mini[0], parseInt(mini[1]) * 7]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('hood-acad-canvas'), { list: hoodacadlist } );
 		});
 
 	var towsonlist = [];
@@ -173,11 +240,39 @@
 				var mini = bigSplit[i].split(",");
 				if (mini.length == 2){
 					if (!isNaN(parseInt(mini[1]))){
-						towsonlist.push([mini[0], parseInt(mini[1]) / 15]);
+						towsonlist.push([mini[0], parseInt(mini[1]) / 10]);
 					}
 				}
 			}
-			WordCloud(document.getElementById('towsoncanvas'), { list: towsonlist } );
+			WordCloud(document.getElementById('towson-canvas'), { list: towsonlist } );
+		});
+
+	var towsonfoodlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/towsonFoodTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						towsonfoodlist.push([mini[0], parseInt(mini[1]) * 5]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('towson-food-canvas'), { list: towsonfoodlist } );
+		});
+
+	var towsonacadlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/towsonAcadTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						towsonacadlist.push([mini[0], parseInt(mini[1]) * 7]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('towson-acad-canvas'), { list: towsonacadlist } );
 		});
 
 	var umdlist = [];
@@ -191,20 +286,76 @@
 					}
 				}
 			}
-			WordCloud(document.getElementById('umdcanvas'), { list: umdlist } );
+			WordCloud(document.getElementById('umd-canvas'), { list: umdlist } );
 		});
-	var list = [];
+
+	var umdfoodlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/umdFoodTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						umdfoodlist.push([mini[0], parseInt(mini[1]) * 2]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('umd-food-canvas'), { list: umdfoodlist } );
+		});
+
+	var umdacadlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/umdAcadTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						umdacadlist.push([mini[0], parseInt(mini[1]) * 7]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('umd-acad-canvas'), { list: umdacadlist } );
+		});
+	var umbclist = [];
 		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/umbcTop.txt', function(data) {
 			var bigSplit = data.split("|");
 			for (i =0; i < bigSplit.length; i++){
 				var mini = bigSplit[i].split(",");
 				if (mini.length == 2){
 					if (!isNaN(parseInt(mini[1]))){
-						list.push([mini[0], parseInt(mini[1]) / 15]);
+						umbclist.push([mini[0], parseInt(mini[1]) / 14]);
 					}
 				}
 			}
-			WordCloud(document.getElementById('umbccanvas'), { list: list } );
+			WordCloud(document.getElementById('umbc-canvas'), { list: umbclist } );
+		});
+
+	var umbcfoodlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/umbcFoodTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						umbcfoodlist.push([mini[0], parseInt(mini[1]) * 4]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('umbc-food-canvas'), { list: umbcfoodlist } );
+		});
+
+	var umbcacadlist = [];
+		jQuery.get('https://raw.githubusercontent.com/Kirkas1/Twitterlytics/master/wordCloudTweets/umbcAcadTop.txt', function(data) {
+			var bigSplit = data.split("|");
+			for (i =0; i < bigSplit.length; i++){
+				var mini = bigSplit[i].split(",");
+				if (mini.length == 2){
+					if (!isNaN(parseInt(mini[1]))){
+						umbcacadlist.push([mini[0], parseInt(mini[1]) * 8]);
+					}
+				}
+			}
+			WordCloud(document.getElementById('umbc-acad-canvas'), { list: umbcacadlist } );
 		});
 </script>
 
