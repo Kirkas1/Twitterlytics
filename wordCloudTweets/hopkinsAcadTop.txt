@@ -1,0 +1,1 @@
+book,57|teacher,48|paper,39|grade,36|under,33|advise,28|study,25|grades,23|learning,22|assistant,18|teach,16|final,16|books,15|mark,10|buddy,10|hall,8|professor,7|library,7|ta,6|graduate,6|teaching,5|doctor,5|center,4|marks,2|educated,1|midterm,1
