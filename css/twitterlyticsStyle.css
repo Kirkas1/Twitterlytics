@@ -41,6 +41,22 @@ li {
 	font-weight: bold;
 }
 
+#thumb {
+	margin-left: 18%;
+}
+
+#thumb-pic {
+	width: 50px;
+	height: 50px;
+}
+
+#sentiment-bar {
+	width: 50%;
+	height: 20px;
+	background: red; /* For browsers that do not support gradients */
+  	background: linear-gradient(to right, red , green 50%); /* Standard syntax */
+}
+
 #footer{
 	background: -moz-linear-gradient(top, #b5bdc8 0%, #28343b 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b5bdc8), color-stop(100%,#28343b)); /* Chrome,Safari4+ */
