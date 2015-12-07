@@ -45,9 +45,17 @@
 			</select>	
 
 			<p><br/>Select a subject matter:</p>
-			<input type="radio" name="subject" id="subject-general" value="General" checked="checked" onClick="updateTwitter();"> General<br />
-			<input type="radio" name="subject" id="subject-food" value="Food" onClick="updateTwitter();"> Food/Dining<br />
-			<input type="radio" name="subject" id="subject-acad" value="Academics" onClick="updateTwitter();"> Academics<br/>
+			<label for="subject-general"> <input type="radio" name="subject" id="subject-general" value="General" checked="checked" onClick="updateTwitter();"> General</label><br />
+			<label for="subject-food"> <input type="radio" name="subject" id="subject-food" value="Food" onClick="updateTwitter();"> Food/Dining</label><br />
+			<label for="subject-acad"> <input type="radio" name="subject" id="subject-acad" value="Academics" onClick="updateTwitter();"> Academics<br/> </label>
+
+			<div id="sentiment">
+				<div id="thumb" >
+					<img id="thumb-pic" src="images/ThumbUp.jpg">
+				</div>
+				<div id="sentiment-bar">
+				</div>
+			</div>
 
 			<br>
 			<p>Word cloud:</p>
