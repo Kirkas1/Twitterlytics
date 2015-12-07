@@ -1,1 +1,1 @@
-Hood,7|Hopkins,3|Towson,5|UMBC,4|UMD,8
+Hood,7|Hopkins,3|Towson,5|UMBC,4|UMD,-8
