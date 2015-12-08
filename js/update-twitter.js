@@ -48,6 +48,7 @@ function updateTwitter() {
 		$("div#umbc-timeline").hide();
 		$("div#umd-timeline").show();
 		
+		$("canvas#umbc-canvas").hide();
 		$("canvas#umbc-food-canvas").hide();
 		$("canvas#umbc-acad-canvas").hide();
 		$("canvas#hopkins-canvas").hide();
