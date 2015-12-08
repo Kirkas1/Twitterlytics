@@ -1,0 +1,80 @@
+10/6/2015
+
+/*
+		final String CONSUMER_KEY = "ugKhuhppdjzkOtsuoSzA6BlZu";
+		final String CONSUMER_SECRET = "4ES3BwudWqVk4Lmpr9aYVhMXtSMNgOSYbq6PLVhOhLDKfMTZr0";
+		final String ACCESS_TOKEN = "46306245-mjOMALTntWw3qCSfuRGZA6sBVhQVak3cx6EKX3Cxp";
+		final String ACCESS_SECRET = "LEYTCyRmaxmokkymsF3AFsayOrnoqbWmsMvJoYJHO5lZE";
+		final double UMBC_LAT = 39.25703;
+		final double UMBC_LONG = -76.710621;
+		final double QUERY_MILES = 2; // IN MILES WOW
+		
+		//final String ARBUTUS_ID = "332025cb8fc55ee8"; FOR TWITTER'S OWN DATABASE
+		//final String CATONSVILLE_ID = "dd03cd2e1b3ad5fa";
+		
+		
+		// Builds config for my twitter app keys
+		ConfigurationBuilder cb = new ConfigurationBuilder();
+		cb.setOAuthConsumerKey(CONSUMER_KEY);
+		cb.setOAuthConsumerSecret(CONSUMER_SECRET);
+		cb.setOAuthAccessToken(ACCESS_TOKEN);
+		cb.setOAuthAccessTokenSecret(ACCESS_SECRET);
+		
+		// Allows me to access twitter
+		Twitter twitter = new TwitterFactory(cb.build()).getInstance();
+		
+		// For keeping track of stats
+		PrintWriter pW = new PrintWriter("generalTweets3.txt", "UTF-8");
+		int numTweets = 0;
+
+		GeoLocation umbcLoc = new GeoLocation(UMBC_LAT, UMBC_LONG);
+
+		Query q = new Query();
+		q.setGeoCode(umbcLoc, QUERY_MILES, Query.MILES);
+		QueryResult r = twitter.search(q);
+		int numTweetsToSearch = 500;
+		long lastID = Long.MAX_VALUE;
+		ArrayList<Status> tweets = new ArrayList<Status>();
+		
+		while(tweets.size() < numTweetsToSearch) {
+			if(numTweetsToSearch - tweets.size() > 100) {
+				q.setCount(100);
+			} else {
+				q.setCount(numTweetsToSearch - tweets.size());
+			}
+		}
+		// Header for csv
+		pW.println("username|date|text|retweet-count|favorite-count");
+		
+		// Keep track of the range of tweets we're gathering
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date min = sdf.parse("3000-12-31");
+		Date max = sdf.parse("1980-12-31");
+		
+		List<Status> tweets = r.getTweets();
+		
+		// Goes through search results
+		while(r.hasNext()) {
+			for(Status s : tweets) {
+				Date tweetDate = s.getCreatedAt();
+				
+				if(tweetDate.compareTo(max) > 0) {
+					max = tweetDate;
+				}
+				else if(tweetDate.compareTo(min) < 0) {
+					min = tweetDate;
+				}
+				
+				
+				
+				numTweets++;
+			}
+			r = twitter.search(r.nextQuery());
+			tweets = r.getTweets();
+		}
+		
+		System.out.println("Radius of search used around UMBC: " + QUERY_MILES + " miles");
+		System.out.println("Number of tweets: " + numTweets);
+		System.out.println("From: " + min + " to " + max);
+
+		pW.close(); */
